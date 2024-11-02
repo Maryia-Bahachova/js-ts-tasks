@@ -4,5 +4,15 @@
  * @returns {number}
  */
 module.exports.digitsSum = function digitsSum(n) {
-  throw new Error('Not implemented'); // remove this line
-};
+
+    const nAbs = Math.abs(n) // -2 to 2
+    const nAbsToString = nAbs.toString(); // number to string
+    const splitted = nAbsToString.split(''); // array
+
+    let sum = 0; //sum of digits
+
+    for (let i = 0; i < splitted.length; i++) {
+      sum += +splitted[i]; // +word => short version of string to number
+    } 
+    return sum;
+  }
