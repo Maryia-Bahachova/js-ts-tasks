@@ -6,22 +6,8 @@
  * @returns {number}
  */
 module.exports.compareSalary = function compareSalary(firstSalary, secondSalary, thirdSalary) {
-  let maxValue;
-  let minValue;
-  if (firstSalary >= secondSalary && firstSalary >= thirdSalary) {
-    maxValue = firstSalary;
-  } else if (thirdSalary >= secondSalary && thirdSalary >= firstSalary) {
-    maxValue = thirdSalary;
-  } else if (secondSalary >= firstSalary && secondSalary >= thirdSalary) {
-    maxValue = secondSalary;
-  }
+  let maxValue = Math.max(firstSalary, secondSalary, thirdSalary);
+  let minValue = Math.min(firstSalary, secondSalary, thirdSalary);
   
-  if (firstSalary <= secondSalary && firstSalary <= thirdSalary) {
-    minValue = firstSalary;
-  } else if (thirdSalary <= secondSalary && thirdSalary <= firstSalary) {
-    minValue = thirdSalary;
-  } else if (secondSalary <= firstSalary && secondSalary <= thirdSalary) {
-    minValue = secondSalary;
-  }
   return maxValue - minValue
 };
