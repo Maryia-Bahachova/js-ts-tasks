@@ -12,7 +12,7 @@ module.exports.sumInRange = function sumInRange(start, end) {
     end = +end;
   }
 
-  if (end < start) {
+  if (end < start) { // 0 end 6 start
     start = -start;
     while (start <= end) {
       sum += start;
