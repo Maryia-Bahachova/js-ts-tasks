@@ -8,7 +8,9 @@ module.exports.sumTwoNumbers = function sumTwoNumbers(firstNumber, secondNumber)
   
   if ( typeof firstNumber === 'string' && typeof secondNumber === 'string') {
     firstNumber = firstNumber.replaceAll(" ", "");
+    secondNumber = secondNumber.replaceAll(" ", "");
     firstNumber = +firstNumber;
+    secondNumber = +secondNumber;
   } 
   if (typeof secondNumber === 'string') {
    secondNumber = secondNumber.replaceAll(" ", "");
