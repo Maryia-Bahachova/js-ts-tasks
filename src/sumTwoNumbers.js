@@ -14,6 +14,10 @@ module.exports.sumTwoNumbers = function sumTwoNumbers(firstNumber, secondNumber)
    secondNumber = secondNumber.replaceAll(" ", "");
    secondNumber = +secondNumber;
   }
+  if (typeof firstNumber === 'string') {
+    firstNumber = firstNumber.replaceAll(" ", "");
+    firstNumber = +firstNumber;
+  }
 
   let sum = firstNumber + secondNumber;
   return sum;
