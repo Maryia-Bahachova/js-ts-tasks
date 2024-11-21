@@ -4,5 +4,22 @@
  * @returns {Object}
  */
 module.exports.getMaximalSequence = function getMaximalSequence(arr) {
-  throw new Error('Not implemented'); // remove me and write a solution
-};
+    let maxSequence = []; // пустой массив
+    let currentSequence = [arr[0]]; // массив со значением 1 элемента
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] === arr[i - 1]) { // если соседние равны
+            currentSequence.push(arr[i]); // пуш в текущую последовательность
+        } else {
+            if (currentSequence.length > maxSequence.length) {
+                maxSequence = currentSequence; // или обновить макс последовательность
+            }
+            currentSequence = [arr[i]]; //обновляем текущую последовательность
+        }
+    }
+    if (currentSequence.length > maxSequence.length) {
+        maxSequence = currentSequence;
+    }
+
+    return maxSequence;
+}

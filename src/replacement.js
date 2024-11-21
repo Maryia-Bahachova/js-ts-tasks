@@ -8,5 +8,18 @@
  * @returns {Array<number>}
  */
 module.exports.replacement = function replacement(arr) {
-  throw new Error('Not implemented'); // remove me and write a solution
+ for (let i = 0; i < arr.length; i++) {
+  const absNumbersLength = Math.abs(arr[i]).toString().length;
+  if(absNumbersLength === 1) {
+    arr[i] = 1;
+  } else if(absNumbersLength === 2){
+    arr[i] = 2;
+  } else if(absNumbersLength === 3){
+    arr[i] = 3;
+  } else{
+    arr[i] = 4;
+  }
+ }
+  
+return arr;
 };

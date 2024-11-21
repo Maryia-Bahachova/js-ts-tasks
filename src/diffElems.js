@@ -4,5 +4,14 @@
  * @returns {number}
  */
 module.exports.diffElems = function diffElems(arr) {
-  throw new Error('Not implemented'); // remove me and write a solution
-};
+  let newarray = [];
+  let diff = 0;
+    for(let i = 0; i < arr.length; i++){
+      if (!newarray.includes(arr[i])) {
+        newarray.push(arr[i]);
+        diff++;
+    }
+    }
+    return diff;
+  
+}
