@@ -13,5 +13,8 @@
  * @returns {function}
  */
 module.exports.palindrome = function palindrome(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
-};
+  return function palind (str) {
+    str = str.toLowerCase().replaceAll(/\W|_/g, "");
+    return TestUtils.isPalindrome.call({str:str});
+  }
+}
