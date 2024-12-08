@@ -11,6 +11,7 @@
 module.exports.formatAddressWithOrder = function formatAddressWithOrder(order) {
   return function (address) {
     let result = order.map(temp => address[temp]);
+    // Для каждого элемента temp в массиве order берется значение из объекта address по ключу temp.
     return result.join(', ');
   }
 };
