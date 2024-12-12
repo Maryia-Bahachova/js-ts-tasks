@@ -14,14 +14,16 @@
  * @returns {function}
  */
 module.exports.censorship = function censorship(forbidden) {
-  const find = new RegExp(forbidden.join('|'), 'g');
-// g значит global те регулярное выражение будет искать все совпадения в строке, а не только первое 
-// find = рег выражение которое ишет все слова из масссива forbidden 
-  return function (string) {
-    return string.replace(find, match => '*'.repeat (match. length));
-  };
-  // Метод replace() ищет все совпадения find в строыке string.
-  //Для каждого совпадения вызывается функция обратного вызова match => '*'.repeat(match.length).
-  };
+ return function (str){
+  for(let i = 0; i < forbidden.length; i++){
+    for(let j = 0; j < str.length; j++) {
+      if(str.includes(forbidden[i])){
+        str = str.replace(forbidden[i], '*'.repeat(forbidden[i].length))
+      }
+    }
+  }
+  return str;
+ }
+};
   
 
