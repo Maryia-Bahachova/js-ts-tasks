@@ -4,13 +4,14 @@
  * @returns {number}
  */
 module.exports.getDaysToNewYear = function getDaysToNewYear(targetDate: Date | string): number {
-  const date = new Date(targetDate);
-    if (isNaN(date.getTime())) {
-        throw new Error("Invalid date format");
-    }
-
-    const nextNewYear = new Date(date.getFullYear() + 1, 0, 1); // January 1st of next year
-    const timeDiff = nextNewYear.getTime() - date.getTime();
-    const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
-
-    return daysLeft;};
+  let date: Date;
+  if (typeof targetDate === 'string') {
+      const [day, month, year] = targetDate.split('.').map(Number);
+      date = new Date(Date.UTC(year!, month! - 1, day));
+  } else {
+      date = new Date(Date.UTC(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate()));
+  }
+  const newYear = new Date(Date.UTC(date.getUTCFullYear() + 1, 0, 1));
+  const diffTime = newYear.getTime() - date.getTime();
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+}

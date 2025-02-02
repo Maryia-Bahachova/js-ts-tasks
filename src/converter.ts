@@ -6,29 +6,23 @@
  * @returns {number}
  */
 module.exports.converter = function (value: number, from: string, to: string): number {
-  const conversions: Record<string, Record<string, (val: number) => number>> = {
-    m: {
-        mi: (m) => m / 1609.34
-    },
-    mi: {
-        m: (mi) => mi * 1609.34
-    },
-    gr: {
-        pound: (gr) => gr / 453.592
-    },
-    pound: {
-        gr: (pound) => pound * 453.592
-    },
-    C: {
-        K: (c) => c + 273.15
-    },
-    K: {
-        C: (k) => k - 273.15
+     if (from === 'm' && to === 'mi') {
+        return parseFloat((value * 0.000621371).toFixed(2));
+    } else if (from === 'mi' && to === 'm') {
+        return parseFloat((value * 1609.344).toFixed(2));
     }
-};
-if (conversions[from] && conversions[from][to]) {
-  return parseFloat(conversions[from][to](value).toFixed(2));
-} else {
-  throw new Error("Invalid conversion units");
-}
+
+    if (from === 'gr' && to === 'pound') {
+        return parseFloat((value * 0.00220462).toFixed(2));
+    } else if (from === 'pound' && to === 'gr') {
+        return parseFloat((value * 453.592).toFixed(2));
+    }
+
+    if (from === 'C' && to === 'K') {
+        return parseFloat((value + 273.15).toFixed(2));
+    } else if (from === 'K' && to === 'C') {
+        return parseFloat((value - 273.15).toFixed(2));
+    }
+    
+    return parseFloat(value.toFixed(2));
 };
