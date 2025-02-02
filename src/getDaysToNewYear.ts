@@ -7,11 +7,14 @@ module.exports.getDaysToNewYear = function getDaysToNewYear(targetDate: Date | s
   let date: Date;
   if (typeof targetDate === 'string') {
       const [day, month, year] = targetDate.split('.').map(Number);
-      date = new Date(Date.UTC(year!, month! - 1, day));
+      if(!day || !year || !month){
+        throw new Error('Invalid date');
+      }
+      date = new Date(year, month - 1, day);
   } else {
-      date = new Date(Date.UTC(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate()));
+      date = new Date(targetDate);
   }
-  const newYear = new Date(Date.UTC(date.getUTCFullYear() + 1, 0, 1));
-  const diffTime = newYear.getTime() - date.getTime();
-  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const targetNewYear = new Date (2024, 0, 1);
+  const timeDiff = targetNewYear.getTime() - date.getTime();
+  return Math. floor (timeDiff / (1000 * 60 * 60 * 24));
 }
